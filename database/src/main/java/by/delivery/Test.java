@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Test {
 
@@ -24,7 +25,7 @@ public class Test {
                 .setCategory(Category.PIZZA)
                 .build();
 
-        Order order = new Order.Builder().setDateTime(LocalDate.now())
+        Order order = new Order.Builder().setDateTime(LocalDateTime.now())
                 .setUser(user)
                 .setDish(dish)
                 .build();
