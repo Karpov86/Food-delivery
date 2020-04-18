@@ -1,6 +1,7 @@
 package by.delivery;
 
 import by.delivery.dao.HibernateUtil;
+import by.delivery.dao.UserDaoImpl;
 import by.delivery.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -19,6 +20,12 @@ public class Test {
                 .setPassword("111")
                 .setHomeAddress(new Address("some city", "some street"))
                 .build();
+
+        User user1 = new User.Builder().setName("Bill")
+                .setEmail("email")
+                .setPhoneNumber("+555-55-55")
+                .build();
+
         Dish dish = new Dish.Builder()
                 .setName("Margarita")
                 .setPrice(5.15F)
@@ -30,7 +37,14 @@ public class Test {
                 .setDish(dish)
                 .build();
 
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        //UserDaoImpl.getInstance().save(user);
+        //UserDaoImpl.getInstance().update(1L, user1);
+        /*User user2 = UserDaoImpl.getInstance().find(1L);
+        System.out.println(user2);*/
+        UserDaoImpl.getInstance().delete(1L);
+
+
+       /* SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -39,7 +53,7 @@ public class Test {
         session.save(order);
 
         transaction.commit();
-        session.close();
+        session.close();*/
 
     }
 }
