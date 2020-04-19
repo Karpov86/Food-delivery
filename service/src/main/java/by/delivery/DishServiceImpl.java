@@ -1,9 +1,7 @@
 package by.delivery;
 
 import by.delivery.dao.DishDaoImpl;
-import by.delivery.dao.UserDaoImpl;
 import by.delivery.entity.Dish;
-import by.delivery.entity.User;
 
 public class DishServiceImpl implements DishService<Dish> {
 
