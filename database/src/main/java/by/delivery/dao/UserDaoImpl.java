@@ -8,12 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.List;
-
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 
 public class UserDaoImpl implements UserDao<User> {
@@ -116,9 +110,11 @@ public class UserDaoImpl implements UserDao<User> {
         final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         final Session session = sessionFactory.openSession();
 
-        Query query = session.createQuery(hql);
+        final Query query = session.createQuery(hql);
+
         query.setParameter("paramName", name);
         query.setParameter("paramPassword", password);
-        return query.list() != null;
+
+        return !query.list().isEmpty();
     }
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -6,6 +7,8 @@
 
 </head>
 <body>
-<h1>Home page</h1>
+<c:import url="WEB-INF/jsp/header.jsp"/>
+<h1 style="margin-left: 40%">Home page</h1>
+<c:import url="WEB-INF/jsp/footer.jsp"/>
 </body>
 </html>

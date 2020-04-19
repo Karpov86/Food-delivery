@@ -11,12 +11,10 @@
 
     <artifactId>web</artifactId>
     <packaging>jar</packaging>
-
-    <build>
-        <finalName>web</finalName>
-    </build>
+    <name>web</name>
 
     <dependencies>
+
         <dependency>
             <groupId>by.delivery</groupId>
             <artifactId>service</artifactId>
@@ -28,7 +26,11 @@
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
-
 
 </project>
