@@ -54,5 +54,7 @@ public class Test {
         transaction.commit();
         session.close();*/
 
+        System.out.println(UserDaoImpl.getInstance().authentication("Bill", "111"));
+
     }
 }

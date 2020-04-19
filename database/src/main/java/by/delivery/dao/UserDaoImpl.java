@@ -6,6 +6,13 @@ import lombok.NoArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 
@@ -102,5 +109,16 @@ public class UserDaoImpl implements UserDao<User> {
 
         session.close();
         return user;
+    }
+
+    public boolean authentication(String name, String password) {
+        final String hql = "FROM User WHERE name = :paramName AND password = :paramPassword";
+        final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        final Session session = sessionFactory.openSession();
+
+        Query query = session.createQuery(hql);
+        query.setParameter("paramName", name);
+        query.setParameter("paramPassword", password);
+        return query.list() != null;
     }
 }
