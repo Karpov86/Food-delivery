@@ -1,6 +1,6 @@
 package by.delivery.dao;
 
-public interface UserDao <T> {
+public interface UserDao<T> {
 
     boolean save(T user);
 
