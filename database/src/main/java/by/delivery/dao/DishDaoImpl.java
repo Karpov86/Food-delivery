@@ -1,8 +1,6 @@
 package by.delivery.dao;
 
 import by.delivery.entity.Dish;
-import by.delivery.entity.Order;
-import by.delivery.entity.User;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.hibernate.Session;
@@ -70,5 +68,15 @@ public class DishDaoImpl implements DishDao<Dish> {
         transaction.commit();
         session.close();
         return true;
+    }
+
+    @Override
+    public boolean delete(Long id) {
+        return false;
+    }
+
+    @Override
+    public Dish find(Long id) {
+        return null;
     }
 }

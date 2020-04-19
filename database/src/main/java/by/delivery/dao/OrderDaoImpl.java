@@ -1,7 +1,6 @@
 package by.delivery.dao;
 
 import by.delivery.entity.Order;
-import by.delivery.entity.User;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import org.hibernate.Session;
@@ -9,7 +8,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class OrderDaoImpl implements OrderDao <Order> {
+public class OrderDaoImpl implements OrderDao<Order> {
 
     private static OrderDaoImpl INSTANCE;
 
@@ -51,7 +50,7 @@ public class OrderDaoImpl implements OrderDao <Order> {
         if (updateData.getUser() != null) {
             order.setUser(updateData.getUser());
         }
-        if (updateData.getDish != null) {
+        if (updateData.getDish() != null) {
             order.setDish(updateData.getDish());
         }
 

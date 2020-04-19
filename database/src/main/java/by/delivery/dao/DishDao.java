@@ -1,6 +1,6 @@
 package by.delivery.dao;
 
-public interface DishDao <T> {
+public interface DishDao<T> {
 
     boolean save(T dish);
 

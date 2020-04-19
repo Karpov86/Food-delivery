@@ -1,13 +1,8 @@
 package by.delivery;
 
-import by.delivery.dao.HibernateUtil;
 import by.delivery.dao.UserDaoImpl;
 import by.delivery.entity.*;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Test {
@@ -37,11 +32,15 @@ public class Test {
                 .setDish(dish)
                 .build();
 
-        //UserDaoImpl.getInstance().save(user);
-        //UserDaoImpl.getInstance().update(1L, user1);
+        /*if (UserDaoImpl.getInstance().save(user)){
+            System.out.println("Success");
+        }*/
+        /*if (UserDaoImpl.getInstance().update(4L, user1)){
+            System.out.println("Success");
+        }*/
         /*User user2 = UserDaoImpl.getInstance().find(1L);
         System.out.println(user2);*/
-        UserDaoImpl.getInstance().delete(1L);
+        //UserDaoImpl.getInstance().delete(1L);
 
 
        /* SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
