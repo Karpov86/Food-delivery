@@ -11,10 +11,8 @@
 
     <artifactId>service</artifactId>
     <packaging>jar</packaging>
+    <name>service</name>
 
-    <build>
-        <finalName>service</finalName>
-    </build>
     <dependencies>
         <dependency>
             <groupId>by.delivery</groupId>
@@ -22,5 +20,6 @@
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
+
 
 </project>

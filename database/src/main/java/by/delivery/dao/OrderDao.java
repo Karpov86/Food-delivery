@@ -1,6 +1,6 @@
 package by.delivery.dao;
 
-public interface OrderDao <T> {
+public interface OrderDao<T> {
 
     boolean save(T order);
 

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 
@@ -30,11 +31,12 @@ public class UserDaoImpl implements UserDao<User> {
         final Session session = sessionFactory.openSession();
         final Transaction transaction = session.beginTransaction();
 
-        session.persist(user);
-
-        transaction.commit();
-        session.close();
-        return true;
+        if (session.save(user) != null) {
+            transaction.commit();
+            session.close();
+            return true;
+        }
+        return false;
     }
 
     public boolean update(Long id, User updateData) {
@@ -67,11 +69,12 @@ public class UserDaoImpl implements UserDao<User> {
             user.setWorkAddress(updateData.getWorkAddress());
         }
 
-        session.merge(user);
-
-        transaction.commit();
-        session.close();
-        return true;
+        if (session.merge(user) != null) {
+            transaction.commit();
+            session.close();
+            return true;
+        }
+        return false;
     }
 
     public boolean delete(Long id) {
@@ -82,11 +85,14 @@ public class UserDaoImpl implements UserDao<User> {
 
         User user = session.get(User.class, id);
 
-        session.delete(user);
+        if (user != null) {
+            session.delete(user);
 
-        transaction.commit();
-        session.close();
-        return true;
+            transaction.commit();
+            session.close();
+            return true;
+        }
+        return false;
     }
 
     public User find(Long id) {
@@ -97,5 +103,18 @@ public class UserDaoImpl implements UserDao<User> {
 
         session.close();
         return user;
+    }
+
+    public boolean authentication(String name, String password) {
+        final String hql = "FROM User WHERE name = :paramName AND password = :paramPassword";
+        final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        final Session session = sessionFactory.openSession();
+
+        final Query query = session.createQuery(hql);
+
+        query.setParameter("paramName", name);
+        query.setParameter("paramPassword", password);
+
+        return !query.list().isEmpty();
     }
 }
