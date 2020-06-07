@@ -2,7 +2,7 @@ package by.delivery.web;
 
 import by.delivery.entity.Address;
 import by.delivery.entity.User;
-import by.delivery.UserServiceImpl;
+import by.delivery.service.UserServiceImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class RegistrationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         UserServiceImpl userService = new UserServiceImpl();
-        final boolean isSave = userService.save(new User.Builder()
+        final boolean isSave = userService.saveUser(new User.Builder()
                 .setName(request.getParameter("name"))
                 .setSurname(request.getParameter("surname"))
                 .setHomeAddress(new Address(request.getParameter("city"), request.getParameter("street")))

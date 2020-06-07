@@ -1,12 +1,10 @@
 package by.delivery;
 
-import by.delivery.dao.UserDaoImpl;
 import by.delivery.entity.*;
 
 import java.time.LocalDateTime;
 
 public class Test {
-
 
     public static void main(String[] args) {
 
@@ -32,29 +30,18 @@ public class Test {
                 .setDish(dish)
                 .build();
 
-        /*if (UserDaoImpl.getInstance().save(user)){
-            System.out.println("Success");
-        }*/
-        /*if (UserDaoImpl.getInstance().update(4L, user1)){
-            System.out.println("Success");
-        }*/
-        /*User user2 = UserDaoImpl.getInstance().find(1L);
-        System.out.println(user2);*/
-        //UserDaoImpl.getInstance().delete(1L);
 
+        /*final SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 
-       /* SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
+        final Session session = sessionFactory.openSession();
 
-        session.save(user);
-        session.save(dish);
-        session.save(order);
+        JPAQuery<User> query = new JPAQuery<>(session);
+        QUser qUser = QUser.user;
+        List<User> results = query.select(qUser).from(qUser).fetchResults().getResults();
+        results.forEach(System.out::println);
 
-        transaction.commit();
-        session.close();*/
-
-        System.out.println(UserDaoImpl.getInstance().authentication("Bill", "111"));
+        List<String> bill = query.select(qUser.phoneNumber).from(qUser).where(qUser.name.eq("Bill")).fetchResults().getResults();
+        bill.forEach(System.out::println);*/
 
     }
 }

@@ -1,6 +1,6 @@
 package by.delivery.web;
 
-import by.delivery.AuthenticationUserService;
+import by.delivery.service.AuthenticationUserService;
 import by.delivery.entity.User;
 
 import javax.servlet.ServletException;
