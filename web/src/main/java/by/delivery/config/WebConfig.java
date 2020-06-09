@@ -7,12 +7,9 @@ import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-/**
- * @author alexandergorovtsov
- */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "by.delivery.controller")
+@ComponentScan(basePackages = "by.delivery")
 public class WebConfig
 {
     @Bean
