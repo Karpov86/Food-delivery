@@ -30,8 +30,10 @@ public class UserDaoTest {
                 .setId(1L)
                 .setName("Bill")
                 .setSurname("Black")
+                .setPassword("111")
                 .setEmail("some@email")
                 .setPhoneNumber("+555-55-55")
+                .setHomeAddress(new Address("Minsk", "some street"))
                 .build();
         userRepo.save(user);
     }
@@ -91,5 +93,40 @@ public class UserDaoTest {
         userRepo.save(user);
         String name = userRepo.findById(1L).get().getName();
         assertEquals("Jack", name);
+    }
+
+    @Test
+    @Transactional
+    public void testFindUserByNameAndPassword(){
+        User user = userRepo.findUserByNameAndPassword("Bill", "111");
+        assertNotNull(user);
+        assertEquals("Bill 111", user.getName() + " " + user.getPassword());
+    }
+
+    @Test
+    @Transactional
+    public void testFindAllByPhoneNumber(){
+        List<User> allByPhoneNumber = userRepo.findAllByPhoneNumber("+555-55-55");
+        String phoneNumber = allByPhoneNumber.get(0).getPhoneNumber();
+        assertEquals(1, allByPhoneNumber.size());
+        assertEquals("+555-55-55", phoneNumber);
+    }
+
+    @Test
+    @Transactional
+    public void testFindAllByHomeAddressCity(){
+        List<User> allByHomeAddressCity = userRepo.findAllByHomeAddressCity("Minsk");
+        assertTrue(!allByHomeAddressCity.isEmpty());
+        String city = allByHomeAddressCity.get(0).getHomeAddress().getCity();
+        assertEquals("Minsk", city);
+    }
+
+    @Test
+    @Transactional
+    public void testFindAllByEmail(){
+        List<User> allByEmail = userRepo.findAllByEmail("some@email");
+        assertTrue(!allByEmail.isEmpty());
+        String email = allByEmail.get(0).getEmail();
+        assertEquals("some@email", email);
     }
 }
