@@ -1,5 +1,6 @@
 package by.delivery.repository;
 
+import by.delivery.entity.Address;
 import by.delivery.entity.User;
 import org.springframework.data.repository.CrudRepository;
 
@@ -13,5 +14,11 @@ public interface UserRepo extends CrudRepository<User, Long> {
     List<User> findAll();
 
     User findUserByNameAndPassword(String name, String password);
+
+    List<User> findAllByPhoneNumber(String phoneNumber);
+
+    List<User> findAllByHomeAddressCity(String homeAddressCity);
+
+    List<User> findAllByEmail(String email);
 
 }
