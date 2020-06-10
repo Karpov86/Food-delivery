@@ -15,6 +15,7 @@ import static by.delivery.util.ServletUtil.createViewPath;
 
 @WebServlet(urlPatterns = "/register", name = "RegistrationServlet")
 public class RegistrationServlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         UserServiceImpl userService = new UserServiceImpl();

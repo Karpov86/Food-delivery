@@ -15,10 +15,4 @@ public interface UserRepo extends CrudRepository<User, Long> {
 
     User findUserByNameAndPassword(String name, String password);
 
-    List<User> findAllByPhoneNumber(String phoneNumber);
-
-    List<User> findAllByHomeAddressCity(String homeAddressCity);
-
-    List<User> findAllByEmail(String email);
-
 }
